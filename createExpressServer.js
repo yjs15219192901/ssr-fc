@@ -3,6 +3,7 @@ import renderToStreamForFaas from 'ykfe-utils/es/renderToStreamForFass'
 
 const ssrConfig = require('./config/config.ssr')
 const isDev = process.env.local
+const getApi = require('./api')
 
 const createServer = () => {
   const server = express()
@@ -41,6 +42,12 @@ const createServer = () => {
         console.log(`renderStream Error ${error}`)
       }
     })
+  })
+  server.get('/api/getIndexData', async(req, res) => {
+    res.status = 200;
+    res.set('Content-Type', 'text/html');
+    let data = getApi;
+    res.send(data);
   })
   server.use(express.static('dist'))
 

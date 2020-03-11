@@ -1,15 +1,15 @@
 ROSTemplateFormatVersion: '2015-09-01'
 Transform: 'Aliyun::Serverless-2018-04-03'
 Resources:
-  ssr-fc.com: # domain name
-    Type: 'Aliyun::Serverless::CustomDomain'
-    Properties:
-      Protocol: HTTP
-      RouteConfig:
-        routes: 
-          '/*':
-            ServiceName: ssr
-            FunctionName: page
+  # ssr-fc.com: # domain name
+  #   Type: 'Aliyun::Serverless::CustomDomain'
+  #   Properties:
+  #     Protocol: HTTP
+  #     RouteConfig:
+  #       routes: 
+  #         '/*':
+  #           ServiceName: ssr
+  #           FunctionName: page
   ssr:
     Type: 'Aliyun::Serverless::Service'
     Properties:
@@ -19,6 +19,7 @@ Resources:
       Properties:
         Handler: ./dist/FC.server.handler
         CodeUri: '.'
+        # Initializer: ./dist/FC.server.initializer
         Description: 'fc ssr demo with nodejs8!'
         Runtime: nodejs8
       Events:
