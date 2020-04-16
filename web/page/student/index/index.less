@@ -1,0 +1,48 @@
+.student-index-body {
+    display: flex;
+    padding: 20px 20px;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+    .student-index-card {
+        width: calc((100vw - 100px) / 4);
+        // height: 180px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+
+        &:nth-child(4n){
+            margin-right: 0;
+        }
+    }
+}
+.student-index-tool {
+    display: flex;
+    padding: 20px 20px 0;
+    .student-index-filter {
+        margin-right: 30px;
+    }
+    
+    .student-index-search {
+        display: flex;
+        width: 600px;
+        line-height: 32px;
+        margin-right: 30px;
+        .student-index-input {
+            width: 80%;
+        }
+    }
+}
+
+.student-index-card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: flex;
+    line-height: 22px;
+}
+
+.student-index-empty {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}

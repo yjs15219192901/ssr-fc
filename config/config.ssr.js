@@ -1,33 +1,66 @@
-const isDev = process.env.local || process.env.NODE_ENV === 'development'
-const prefix = isDev ? '/2016-08-15/proxy/ssr/page' : '' // 静态资源路径前缀
+const isDev = process.env.local || process.env.NODE_ENV === "development";
+const prefix = isDev ? "/2016-08-15/proxy/ssr/page" : ""; // 静态资源路径前缀
 
 module.exports = {
-  type: 'ssr', // 指定运行类型可设置为csr切换为客户端渲染
+  type: "ssr", // 指定运行类型可设置为csr切换为客户端渲染
   prefix,
-  runtime: 'serverless',
+  runtime: "serverless",
   routes: [
     {
-      path: '/',
+      path: "/",
       exact: true,
-      Component: () => (require('@/page/index').default), // 这里使用一个function包裹为了让它延迟require
-      controller: 'page',
-      handler: 'index'
+      Component: () => require("@/page/student/index").default, // 这里使用一个function包裹为了让它延迟require
+      controller: "page",
+      handler: "index",
     },
     {
-      path: '/news/:id',
+      path: "/activity/:id",
       exact: true,
-      Component: () => (require('@/page/news').default),
-      controller: 'page',
-      handler: 'index'
-    }
+      Component: () => require("@/page/student/activity").default,
+      controller: "page",
+      handler: "index",
+    },
+    {
+      path: "/profile",
+      exact: true,
+      Component: () => require("@/page/student/profile").default,
+      controller: "page",
+      handler: "index",
+    },
+    {
+      path: "/admin",
+      exact: true,
+      Component: () => require("@/page/administrator/index").default,
+      controller: "page",
+      handler: "index",
+    },
+    {
+      path: "/admin/activityDetail/:id",
+      exact: true,
+      Component: () => require("@/page/administrator/activityDetail").default,
+      controller: "page",
+      handler: "index",
+    },
+    {
+      path: "/admin/activityPost",
+      exact: true,
+      Component: () => require("@/page/administrator/postActivity").default,
+      controller: "page",
+      handler: "index",
+    },
+    {
+      path: "/admin/activityPost/:id",
+      exact: true,
+      Component: () => require("@/page/administrator/postActivity").default,
+      controller: "page",
+      handler: "index",
+    },
   ],
-  injectCss: [
-    `${prefix}/static/css/Page.chunk.css`
-  ], // 客户端需要加载的静态样式表
+  injectCss: [`${prefix}/static/css/Page.chunk.css`], // 客户端需要加载的静态样式表
   injectScript: [
     `<script src='${prefix}/static/js/runtime~Page.js'></script>`,
     `<script src='${prefix}/static/js/vendor.chunk.js'></script>`,
-    `<script src='${prefix}/static/js/Page.chunk.js'></script>`
+    `<script src='${prefix}/static/js/Page.chunk.js'></script>`,
   ], // 客户端需要加载的静态资源文件表
-  serverJs: 'entry' // web/entry
-}
+  serverJs: "entry", // web/entry
+};

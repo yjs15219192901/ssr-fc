@@ -1,0 +1,16 @@
+.student-profile-collections-container {
+  display: flex;
+  padding: 20px 20px;
+  // justify-content: space-between;
+  flex-wrap: wrap;
+  .student-profile-collections-card {
+    width: calc((100vw - 100px) / 4);
+    // height: 180px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}

@@ -123,7 +123,7 @@ const webpackModule = {
           use: getStyleLoaders(
             {
               importLoaders: 2,
-              localIdentName: '[local]'
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
             },
             'less-loader'
           ),

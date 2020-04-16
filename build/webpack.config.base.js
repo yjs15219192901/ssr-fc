@@ -36,6 +36,22 @@ const webpackModule = {
                 }
               ],
               '@babel/preset-react'
+            ],
+            plugins: [
+              ["import", {
+                "libraryName": "antd",
+                "libraryDirectory": "es",
+                "style": "css" // `style: true` 会加载 less 文件
+              }],
+              // ["react-css-modules", {
+              //   generateScopedName: '[name]-[local]-[hash:base64:5]',
+              //   exclude: 'node_modules',
+              //       filetypes: {
+              //           '.less': {
+              //               syntax: 'postcss-less'
+              //           }
+              //       },
+              // }]
             ]
           }
         }

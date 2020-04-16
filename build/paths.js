@@ -62,7 +62,7 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('web'),
   entry: resolveApp('web/entry'),
-  fc: resolveApp('fc'),
+  fc: resolveApp('app/fc'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
